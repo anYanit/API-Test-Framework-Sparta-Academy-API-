@@ -25,8 +25,9 @@ public class ApiBuilder {
                 ));
     }
 
-    private static RequestSpecification authentificationLogin() {
+    public static RequestSpecification authentificationLogin(String body) {
         return getBaseSpecBuilder(POST_LOGIN)
+                .setBody(body)
                 .build();
     }
 }
