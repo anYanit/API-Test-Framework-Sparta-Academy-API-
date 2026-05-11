@@ -20,14 +20,14 @@ public class ApiBuilder {
         return new RequestSpecBuilder()
                 .setBaseUri(BASE_URI)
                 .setBasePath(path)
+                .setContentType("application/json")
                 .addHeaders(Map.of(
                         "Accept", "*/*"
                 ));
     }
 
-    public static RequestSpecification authentificationLogin(String body) {
+    public static RequestSpecification authentificationLogin() {
         return getBaseSpecBuilder(POST_LOGIN)
-                .setBody(body)
                 .build();
     }
 }
