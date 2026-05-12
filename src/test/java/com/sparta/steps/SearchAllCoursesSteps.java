@@ -20,7 +20,7 @@ public class SearchAllCoursesSteps {
     }
 
     @When("the user sends a GET request to {string}")
-    public void theUserSendsAGETRequestTo(String arg0) {
+    public void theUserSendsAGETRequestTo(String api) {
         response = RestAssured
                 .given()
                 .spec(ApiBuilder.getAllCourses())
