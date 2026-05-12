@@ -2,6 +2,7 @@ package com.sparta.steps;
 
 import com.sparta.pojos.LoginRequest;
 import com.sparta.utils.ApiBuilder;
+import io.cucumber.java.PendingException;
 import io.cucumber.java.en.And;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
@@ -17,11 +18,8 @@ public class UserLoginSteps {
     private Response response;
     private LoginRequest loginRequest;
 
-    private final String username = "sparta";
-    private final String password = "global";
-
-    @Given("a user exists with a valid username and password")
-    public void aUserExistsWithAValidUsernameAndPassword() {
+    @Given("a user exists with a valid username and password {string} and {string}")
+    public void aUserExistsWithAValidUsernameAndPassword(String username, String password) {
         loginRequest = new LoginRequest();
         loginRequest.setUsername(username);
         loginRequest.setPassword(password);
