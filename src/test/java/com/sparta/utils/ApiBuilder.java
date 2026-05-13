@@ -17,7 +17,7 @@ public class ApiBuilder {
     public static final String POST_LOGIN = resource.getString("automation.post_login");
 
     // GET endpoints
-    public static final String GET_ALL_COURSES = resource.getString("automation.get_courses");
+    public static final String GET_COURSES = resource.getString("automation.get_courses");
 
     private static RequestSpecBuilder getBaseSpecBuilder(String path) {
         return new RequestSpecBuilder()
@@ -35,7 +35,18 @@ public class ApiBuilder {
     }
 
     public static RequestSpecification getAllCourses() {
-        return getBaseSpecBuilder(GET_ALL_COURSES)
+        return getBaseSpecBuilder(GET_COURSES)
+                .build();
+    }
+
+    public static RequestSpecification getCourseWithId(int id) {
+        return new RequestSpecBuilder()
+                .setBaseUri(BASE_URI)
+                .setBasePath(GET_COURSES + "/" + id)
+                .setContentType("application/json")
+                .addHeaders(Map.of(
+                        "Accept", "*/*"
+                ))
                 .build();
     }
 }
