@@ -1,0 +1,17 @@
+{
+  "id": 0,
+  "firstName": "",
+  "lastName": "lastname",
+  "university": "uni",
+  "degree": "degree",
+  "course": {
+    "id": 3,
+    "name": "TECH 302",
+    "stream": {
+      "name": "C# Test"
+    },
+    "trainer": "Nish Mandal"
+  },
+  "courseId": 3,
+  "graduated": true
+}
