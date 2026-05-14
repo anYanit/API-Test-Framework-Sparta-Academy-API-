@@ -20,8 +20,8 @@ public class SearchCourseWithId {
         courseId = id;
     }
 
-    @When("the user sends a GET request with ID to {string}")
-    public void theUserSendsAGETRequestWithIDTo(String api) {
+    @When("the user sends a GET request with ID to Courses api")
+    public void theUserSendsAGETRequestWithIDTo() {
         response = RestAssured
                 .given()
                 .spec(ApiBuilder.getCourseWithId(courseId))
@@ -49,8 +49,8 @@ public class SearchCourseWithId {
     public void noCourseExistsWithId(String id) {
     }
 
-    @When("the user sends a GET request with ID {string} to {string}")
-    public void theUserSendsAGETRequestWithIDTo(String id, String api) {
+    @When("the user sends a GET request with ID {string} to Courses api")
+    public void theUserSendsAGETRequestWithIDTo(String id) {
         response = RestAssured
                 .given()
                 .spec(ApiBuilder.getCourseWithId(id))
