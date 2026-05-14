@@ -1,6 +1,9 @@
 package com.sparta.utils;
 
+import com.sparta.pojos.LoginRequest;
+import io.restassured.RestAssured;
 import io.restassured.builder.RequestSpecBuilder;
+import io.restassured.response.Response;
 import io.restassured.specification.RequestSpecification;
 
 import java.util.Map;
@@ -18,6 +21,7 @@ public class ApiBuilder {
 
     // GET endpoints
     public static final String GET_COURSES = resource.getString("automation.get_courses");
+    public static final String GET_SPARTANS = resource.getString("automation.get_spartans");
 
     private static RequestSpecBuilder getBaseSpecBuilder(String path) {
         return new RequestSpecBuilder()
@@ -39,13 +43,41 @@ public class ApiBuilder {
                 .build();
     }
 
-    public static RequestSpecification getCourseWithId(int id) {
+    public static RequestSpecification getCourseWithId(String id) {
         return new RequestSpecBuilder()
                 .setBaseUri(BASE_URI)
                 .setBasePath(GET_COURSES + "/" + id)
                 .setContentType("application/json")
                 .addHeaders(Map.of(
                         "Accept", "*/*"
+                ))
+                .build();
+    }
+
+    public static String getBearerToken() {
+        Response response;
+        LoginRequest loginRequest = new LoginRequest();
+
+        loginRequest.setUsername("sparta");
+        loginRequest.setPassword("global");
+
+        response = RestAssured
+                .given()
+                .spec(ApiBuilder.authentificationLogin())
+                .body(loginRequest)
+                .when()
+                .post()
+                .then()
+                .log().all()
+                .extract().response();
+
+        return response.jsonPath().getString("token");
+    }
+
+    public static RequestSpecification getAllSpartans(String bearerToken) {
+        return getBaseSpecBuilder(GET_SPARTANS)
+                .addHeaders(Map.of(
+                        "Authorization", "Bearer " + bearerToken
                 ))
                 .build();
     }
