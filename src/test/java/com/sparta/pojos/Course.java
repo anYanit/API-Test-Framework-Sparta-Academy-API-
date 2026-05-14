@@ -14,7 +14,6 @@ public class Course {
         this.id = id;
     }
 
-
     public String getName() {
         return name;
     }
@@ -23,7 +22,6 @@ public class Course {
         this.name = name;
     }
 
-
     public Stream getStream() {
         return stream;
     }
@@ -31,7 +29,6 @@ public class Course {
     public void setStream(Stream stream) {
         this.stream = stream;
     }
-
 
     public String getTrainer() {
         return trainer;
