@@ -19,8 +19,8 @@ public class SearchAllCoursesSteps {
 
     }
 
-    @When("the user sends a GET request to {string}")
-    public void theUserSendsAGETRequestTo(String api) {
+    @When("the user sends a GET request to Courses api")
+    public void theUserSendsAGETRequestTo() {
         response = RestAssured
                 .given()
                 .spec(ApiBuilder.getAllCourses())
