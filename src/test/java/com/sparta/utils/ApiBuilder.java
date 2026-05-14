@@ -81,4 +81,16 @@ public class ApiBuilder {
                 ))
                 .build();
     }
+
+    public static RequestSpecification getSpartanWithId(String bearerToken, String id) {
+        return new RequestSpecBuilder()
+                .setBaseUri(BASE_URI)
+                .setBasePath(GET_SPARTANS + "/" + id)
+                .setContentType("application/json")
+                .addHeaders(Map.of(
+                        "Accept", "*/*",
+                        "Authorization", "Bearer " + bearerToken
+                ))
+                .build();
+    }
 }
