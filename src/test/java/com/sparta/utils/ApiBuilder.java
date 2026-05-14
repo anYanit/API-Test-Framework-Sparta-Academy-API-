@@ -18,6 +18,7 @@ public class ApiBuilder {
 
     // POST endpoints
     public static final String POST_LOGIN = resource.getString("automation.post_login");
+    public static final String POST_SPARTANS = resource.getString("automation.post_spartans");
 
     // GET endpoints
     public static final String GET_COURSES = resource.getString("automation.get_courses");
@@ -89,6 +90,14 @@ public class ApiBuilder {
                 .setContentType("application/json")
                 .addHeaders(Map.of(
                         "Accept", "*/*",
+                        "Authorization", "Bearer " + bearerToken
+                ))
+                .build();
+    }
+
+    public static RequestSpecification createNewSpartan(String bearerToken) {
+        return getBaseSpecBuilder(POST_SPARTANS)
+                .addHeaders(Map.of(
                         "Authorization", "Bearer " + bearerToken
                 ))
                 .build();
