@@ -13,10 +13,10 @@ import org.hamcrest.Matchers;
 public class SearchCourseWithId {
 
     private Response response;
-    private int courseId;
+    private String courseId;
 
-    @Given("a Course exists with ID {int}")
-    public void aCourseExistsWithId(int id) {
+    @Given("a Course exists with ID {string}")
+    public void aCourseExistsWithId(String id) {
         courseId = id;
     }
 
@@ -38,17 +38,19 @@ public class SearchCourseWithId {
         MatcherAssert.assertThat(responseCode, Matchers.is(expectedResponse));
     }
 
-    @And("the response body should contain the Course details")
-    public void theResponseBodyShouldContainTheCourseDetails() {
+    @And("the response body should contain the Course details: id, {string} and {string}")
+    public void theResponseBodyShouldContainTheCourseDetails(String name, String stream) {
         MatcherAssert.assertThat(response.jsonPath().getString("id"), Matchers.is(String.valueOf(courseId)));
+        MatcherAssert.assertThat(response.jsonPath().getString("name"), Matchers.is(String.valueOf(name)));
+        MatcherAssert.assertThat(response.jsonPath().getString("stream"), Matchers.is(String.valueOf(stream)));
     }
 
-    @Given("no Course exists with id {int}")
-    public void noCourseExistsWithId(int id) {
+    @Given("no Course exists with id {string}")
+    public void noCourseExistsWithId(String id) {
     }
 
-    @When("the user sends a GET request with ID {int} to {string}")
-    public void theUserSendsAGETRequestWithIDTo(int id, String api) {
+    @When("the user sends a GET request with ID {string} to {string}")
+    public void theUserSendsAGETRequestWithIDTo(String id, String api) {
         response = RestAssured
                 .given()
                 .spec(ApiBuilder.getCourseWithId(id))
