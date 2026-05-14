@@ -24,8 +24,8 @@ public class UserLoginSteps {
         loginRequest.setPassword(password);
     }
 
-    @When("the user sends a POST request to {string} with valid credentials")
-    public void theUserSendsAPOSTRequestToWithValidCredentials(String api) {
+    @When("the user sends a POST request to login api with valid credentials")
+    public void theUserSendsAPOSTRequestToWithValidCredentials() {
         response = RestAssured
                 .given()
                 .spec(ApiBuilder.authentificationLogin())
@@ -55,8 +55,8 @@ public class UserLoginSteps {
         loginRequest.setPassword("random");
     }
 
-    @When("the user sends a POST request to {string} with unknown credentials")
-    public void theUserSendsAPOSTRequestToWithUnknownCredentials(String api) {
+    @When("the user sends a POST request to login api with unknown credentials")
+    public void theUserSendsAPOSTRequestToWithUnknownCredentials() {
         response = RestAssured
                 .given()
                 .spec(ApiBuilder.authentificationLogin())
@@ -79,8 +79,8 @@ public class UserLoginSteps {
         MatcherAssert.assertThat(response.jsonPath().getString("title"), Matchers.is(expectedTitle));
     }
 
-    @When("the user sends a POST request to {string} without a username and password")
-    public void theUserSendsAPOSTRequestToWithoutAUsernameAndPassword(String api) {
+    @When("the user sends a POST request to login api without a username and password")
+    public void theUserSendsAPOSTRequestToWithoutAUsernameAndPassword() {
         loginRequest = new LoginRequest();
         response = RestAssured
                 .given()
