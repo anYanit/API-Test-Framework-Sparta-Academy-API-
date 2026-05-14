@@ -24,6 +24,9 @@ public class ApiBuilder {
     public static final String GET_COURSES = resource.getString("automation.get_courses");
     public static final String GET_SPARTANS = resource.getString("automation.get_spartans");
 
+    // DELETE endpoints
+    public static final String DELETE_SPARTANS = resource.getString("automation.delete_spartans");
+
     private static RequestSpecBuilder getBaseSpecBuilder(String path) {
         return new RequestSpecBuilder()
                 .setBaseUri(BASE_URI)
@@ -98,6 +101,18 @@ public class ApiBuilder {
     public static RequestSpecification createNewSpartan(String bearerToken) {
         return getBaseSpecBuilder(POST_SPARTANS)
                 .addHeaders(Map.of(
+                        "Authorization", "Bearer " + bearerToken
+                ))
+                .build();
+    }
+
+    public static RequestSpecification deleteSpartan(String bearerToken, String id) {
+        return new RequestSpecBuilder()
+                .setBaseUri(BASE_URI)
+                .setBasePath(DELETE_SPARTANS + "/" + id)
+                .setContentType("application/json")
+                .addHeaders(Map.of(
+                        "Accept", "*/*",
                         "Authorization", "Bearer " + bearerToken
                 ))
                 .build();
