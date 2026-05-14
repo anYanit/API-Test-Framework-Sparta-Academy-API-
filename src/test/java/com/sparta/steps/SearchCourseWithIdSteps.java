@@ -10,7 +10,7 @@ import io.restassured.response.Response;
 import org.hamcrest.MatcherAssert;
 import org.hamcrest.Matchers;
 
-public class SearchCourseWithId {
+public class SearchCourseWithIdSteps {
 
     private Response response;
     private String courseId;
