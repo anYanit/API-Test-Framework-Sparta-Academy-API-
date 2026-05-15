@@ -27,6 +27,9 @@ public class ApiBuilder {
     // DELETE endpoints
     public static final String DELETE_SPARTANS = resource.getString("automation.delete_spartans");
 
+    // PUT endpoints
+    public static final String UPDATE_SPARTANS = resource.getString("automation.put_spartans");
+
     private static RequestSpecBuilder getBaseSpecBuilder(String path) {
         return new RequestSpecBuilder()
                 .setBaseUri(BASE_URI)
@@ -110,6 +113,18 @@ public class ApiBuilder {
         return new RequestSpecBuilder()
                 .setBaseUri(BASE_URI)
                 .setBasePath(DELETE_SPARTANS + "/" + id)
+                .setContentType("application/json")
+                .addHeaders(Map.of(
+                        "Accept", "*/*",
+                        "Authorization", "Bearer " + bearerToken
+                ))
+                .build();
+    }
+
+    public static RequestSpecification updateSpartan(String bearerToken, String id) {
+        return new RequestSpecBuilder()
+                .setBaseUri(BASE_URI)
+                .setBasePath(UPDATE_SPARTANS + "/" + id)
                 .setContentType("application/json")
                 .addHeaders(Map.of(
                         "Accept", "*/*",
