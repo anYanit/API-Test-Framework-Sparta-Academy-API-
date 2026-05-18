@@ -16,10 +16,49 @@ The framework is built around:
 - Language: Java 21
 - API Client: RestAssured
 - Test Runner: JUnit 5 / Cucumber
-- Mocking: Mockito (for Unit Testing utility logic)
 - Build Tool: Maven
 
 ## Prerequisites
 - JDK 21 or higher
 - Maven 4.0.0
 - IntelliJ IDEA (recommended)
+
+## 📌 FEATURES
+1. Automated tests for 3+ API endpoints
+2. Happy & sad path coverage
+3. Unit tests for helper logic 
+4. Optional Cucumber BDD support
+5. Clean, modular framework structure
+
+## END POINTS COVERED
+At least three endpoints are fully validated, including:
+
+1. /Auth/login
+   - POST request
+   - Validate response code
+   - Validate response body
+
+2. /api/Courses
+   - GET request for all and singular Courses using IDs
+   - Validate response code
+   - Validate approriate response body retrieved
+
+3. /api/Spartans
+   - GET request for all and singular Spartans using IDs
+   - POST request for creating new Spartans
+   - PUT request for updating Spartans
+   - DELETE request for deleting a Spartan
+   - Validate response codes
+   - Validate appropriate response bodies retrieved
+  
+## ✔️ TEST COVERAGE
+### Happy Path Tests
+1. Valid requests return correct status codes
+2. Response body contains expected fields
+3. Schema validation
+
+### Sad Path Tests
+1. Missing fields
+2. Invalid data types
+3. Incorrect credentials
+4. Trying to request without authorization
