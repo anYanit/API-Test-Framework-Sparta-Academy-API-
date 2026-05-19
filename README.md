@@ -168,7 +168,160 @@ API-Test-Framework-Sparta-Academy-API-/
                 ├── UpdateSpartan.feature
                 └── UserLogin.feature
 ```
+# Framework Architecture
 
+```mermaid
+flowchart TD
+
+%% =========================
+%% EXECUTION LAYER
+%% =========================
+subgraph grp_test_entry["Execution"]
+    runner["Cucumber Runner<br/>JUnit 5 Runner"]
+    build["Maven Build<br/>pom.xml"]
+    ci["GitHub Actions CI<br/>maven-publish.yml"]
+end
+
+%% =========================
+%% BDD LAYER
+%% =========================
+subgraph grp_bdd["BDD Flow"]
+
+    features["Feature Specs<br/>Gherkin Scenarios"]
+
+    loginSteps["UserLoginSteps"]
+    courseSteps["SearchAllCoursesSteps"]
+    courseIdSteps["SearchCourseWithIdSteps"]
+
+    spartanSteps["SearchAllSpartansSteps"]
+    spartanIdSteps["SearchSpartanWithIdSteps"]
+
+    createSteps["CreateNewSpartanSteps"]
+    updateSteps["UpdateSpartanSteps"]
+    deleteSteps["DeleteSpartanSteps"]
+
+end
+
+%% =========================
+%% API CORE
+%% =========================
+subgraph grp_api_core["HTTP Core"]
+
+    apiBuilder["ApiBuilder<br/>Request Helper"]
+    restAssured["RestAssured<br/>HTTP Client"]
+
+end
+
+%% =========================
+%% TEST DATA
+%% =========================
+subgraph grp_data["Test Data"]
+
+    pojos["POJOs<br/>Course / Spartan / Stream"]
+    fixtures["JSON Fixtures<br/>Test Payloads"]
+
+end
+
+%% =========================
+%% RUNTIME
+%% =========================
+subgraph grp_runtime["External Runtime"]
+
+    config["config.properties"]
+    api[("Sparta Academy API")]
+
+end
+
+%% =========================
+%% FLOW
+%% =========================
+
+ci -->|"runs"| build
+build -->|"executes"| runner
+
+runner -->|"loads"| features
+
+features -->|"binds"| loginSteps
+features -->|"binds"| courseSteps
+features -->|"binds"| courseIdSteps
+features -->|"binds"| spartanSteps
+features -->|"binds"| spartanIdSteps
+features -->|"binds"| createSteps
+features -->|"binds"| updateSteps
+features -->|"binds"| deleteSteps
+
+loginSteps -->|"uses"| apiBuilder
+courseSteps -->|"uses"| apiBuilder
+courseIdSteps -->|"uses"| apiBuilder
+spartanSteps -->|"uses"| apiBuilder
+spartanIdSteps -->|"uses"| apiBuilder
+createSteps -->|"uses"| apiBuilder
+updateSteps -->|"uses"| apiBuilder
+deleteSteps -->|"uses"| apiBuilder
+
+apiBuilder -->|"drives"| restAssured
+apiBuilder -->|"reads"| config
+apiBuilder -->|"serializes"| pojos
+
+createSteps -->|"loads"| fixtures
+updateSteps -->|"loads"| fixtures
+
+apiBuilder -->|"calls"| api
+
+runner -->|"verifies"| api
+
+%% =========================
+%% STYLING
+%% =========================
+
+classDef blue fill:#dbeafe,stroke:#2563eb,color:#172554,stroke-width:1.5px
+classDef amber fill:#fef3c7,stroke:#d97706,color:#78350f,stroke-width:1.5px
+classDef green fill:#dcfce7,stroke:#16a34a,color:#14532d,stroke-width:1.5px
+classDef rose fill:#ffe4e6,stroke:#e11d48,color:#881337,stroke-width:1.5px
+classDef indigo fill:#e0e7ff,stroke:#4f46e5,color:#312e81,stroke-width:1.5px
+
+class runner,build,ci blue
+class features,loginSteps,courseSteps,courseIdSteps,spartanSteps,spartanIdSteps,createSteps,updateSteps,deleteSteps amber
+class apiBuilder,restAssured green
+class pojos,fixtures rose
+class config,api indigo
+
+%% =========================
+%% CLICKABLE LINKS
+%% =========================
+
+click runner "https://github.com/anYanit/API-Test-Framework-Sparta-Academy-API-/blob/master/src/test/java/com/sparta/runner/CucumberRunnerTest.java"
+
+click build "https://github.com/anYanit/API-Test-Framework-Sparta-Academy-API-/blob/master/pom.xml"
+
+click ci "https://github.com/anYanit/API-Test-Framework-Sparta-Academy-API-/blob/master/.github/workflows/maven-publish.yml"
+
+click features "https://github.com/anYanit/API-Test-Framework-Sparta-Academy-API-/tree/master/src/test/resources/features"
+
+click loginSteps "https://github.com/anYanit/API-Test-Framework-Sparta-Academy-API-/blob/master/src/test/java/com/sparta/steps/UserLoginSteps.java"
+
+click courseSteps "https://github.com/anYanit/API-Test-Framework-Sparta-Academy-API-/blob/master/src/test/java/com/sparta/steps/SearchAllCoursesSteps.java"
+
+click courseIdSteps "https://github.com/anYanit/API-Test-Framework-Sparta-Academy-API-/blob/master/src/test/java/com/sparta/steps/SearchCourseWithIdSteps.java"
+
+click spartanSteps "https://github.com/anYanit/API-Test-Framework-Sparta-Academy-API-/blob/master/src/test/java/com/sparta/steps/SearchAllSpartansSteps.java"
+
+click spartanIdSteps "https://github.com/anYanit/API-Test-Framework-Sparta-Academy-API-/blob/master/src/test/java/com/sparta/steps/SearchSpartanWithIdSteps.java"
+
+click createSteps "https://github.com/anYanit/API-Test-Framework-Sparta-Academy-API-/blob/master/src/test/java/com/sparta/steps/CreateNewSpartanSteps.java"
+
+click updateSteps "https://github.com/anYanit/API-Test-Framework-Sparta-Academy-API-/blob/master/src/test/java/com/sparta/steps/UpdateSpartanSteps.java"
+
+click deleteSteps "https://github.com/anYanit/API-Test-Framework-Sparta-Academy-API-/blob/master/src/test/java/com/sparta/steps/DeleteSpartanSteps.java"
+
+click apiBuilder "https://github.com/anYanit/API-Test-Framework-Sparta-Academy-API-/blob/master/src/test/java/com/sparta/utils/ApiBuilder.java"
+
+click pojos "https://github.com/anYanit/API-Test-Framework-Sparta-Academy-API-/tree/master/src/test/java/com/sparta/pojos"
+
+click fixtures "https://github.com/anYanit/API-Test-Framework-Sparta-Academy-API-/tree/master/src/test/resources/external"
+
+click config "https://github.com/anYanit/API-Test-Framework-Sparta-Academy-API-/blob/master/src/test/resources/config.properties"
+```
 ## 📌 FEATURES
 1. Automated tests for 3+ API endpoints
 2. Happy & sad path coverage
