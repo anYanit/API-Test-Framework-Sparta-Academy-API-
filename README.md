@@ -23,6 +23,59 @@ The framework is built around:
 - Maven 4.0.0
 - IntelliJ IDEA (recommended)
 
+## 🌲 Project Tree
+
+API-Test-Framework-Sparta-Academy-API-/
+├── .github/
+│   └── workflows/
+│       └── maven-publish.yml
+├── .gitignore
+├── .idea/
+│   ├── .gitignore
+│   ├── encodings.xml
+│   ├── misc.xml
+│   └── vcs.xml
+├── pom.xml
+├── README.md
+└── src/
+    └── test/
+        ├── java/
+        │   └── com/
+        │       └── sparta/
+        │           ├── pojos/
+        │           │   ├── Course.java
+        │           │   ├── LoginRequest.java
+        │           │   ├── Spartan.java
+        │           │   └── Stream.java
+        │           ├── runner/
+        │           │   └── CucumberRunnerTest.java
+        │           ├── steps/
+        │           │   ├── CreateNewSpartanSteps.java
+        │           │   ├── DeleteSpartanSteps.java
+        │           │   ├── SearchAllCoursesSteps.java
+        │           │   ├── SearchAllSpartansSteps.java
+        │           │   ├── SearchCourseWithIdSteps.java
+        │           │   ├── SearchSpartanWithIdSteps.java
+        │           │   ├── UpdateSpartanSteps.java
+        │           │   └── UserLoginSteps.java
+        │           └── utils/
+        │               └── ApiBuilder.java
+        └── resources/
+            ├── config.properties
+            ├── external/
+            │   ├── MissingFirstNameSpartan.json
+            │   ├── NewSpartan.json
+            │   └── UpdatedSpartan.json
+            └── features/
+                ├── CreateNewSpartan.feature
+                ├── DeleteSpartan.feature
+                ├── SearchAllCourses.feature
+                ├── SearchAllSpartans.feature
+                ├── SearchCourseWithId.feature
+                ├── SearchSpartanWithId.feature
+                ├── UpdateSpartan.feature
+                └── UserLogin.feature
+
 ## 📌 FEATURES
 1. Automated tests for 3+ API endpoints
 2. Happy & sad path coverage
