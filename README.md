@@ -23,8 +23,8 @@ The framework is built around:
 - Maven 4.0.0
 - IntelliJ IDEA (recommended)
 
-## 🌲 Project Tree
-
+## 🌲 Project Tree 
+```text
 API-Test-Framework-Sparta-Academy-API-/
 ├── .github/
 │   └── workflows/
@@ -75,6 +75,7 @@ API-Test-Framework-Sparta-Academy-API-/
                 ├── SearchSpartanWithId.feature
                 ├── UpdateSpartan.feature
                 └── UserLogin.feature
+```
 
 ## 📌 FEATURES
 1. Automated tests for 3+ API endpoints
