@@ -23,6 +23,98 @@ The framework is built around:
 - Maven 4.0.0
 - IntelliJ IDEA (recommended)
 
+## Required dependencies
+The following dependencies must be copied and synced in the pom.xml file of the project to run the tests:
+- hamcrest 2.2
+- slf4j-simple 2.0.7
+- serenity-cucumber 3.9.8
+- junit-jupiter 6.0.0
+- junit-vintage-engine 6.0.0
+- rest-assured 5.3.1
+- json-simple 1.1.1
+- jackson-databind 2.20.1
+- jackson-annotations 2.20
+
+```text
+<dependencies>
+        <dependency>
+            <groupId>org.hamcrest</groupId>
+            <artifactId>hamcrest</artifactId>
+            <version>2.2</version>
+        </dependency>
+
+        <dependency>
+            <groupId>org.slf4j</groupId>
+            <artifactId>slf4j-simple</artifactId>
+            <version>2.0.7</version>
+        </dependency>
+
+        <dependency>
+            <groupId>net.serenity-bdd</groupId>
+            <artifactId>serenity-cucumber</artifactId>
+            <version>3.9.8</version>
+            <scope>test</scope>
+        </dependency>
+
+        <dependency>
+            <groupId>org.junit.jupiter</groupId>
+            <artifactId>junit-jupiter</artifactId>
+            <version>6.0.0</version>
+            <scope>test</scope>
+        </dependency>
+
+        <dependency>
+            <groupId>org.junit.vintage</groupId>
+            <artifactId>junit-vintage-engine</artifactId>
+            <version>6.0.0</version>
+            <scope>test</scope>
+        </dependency>
+
+        <dependency>
+            <groupId>io.rest-assured</groupId>
+            <artifactId>rest-assured</artifactId>
+            <version>5.3.1</version>
+        </dependency>
+
+        <dependency>
+            <groupId>com.googlecode.json-simple</groupId>
+            <artifactId>json-simple</artifactId>
+            <version>1.1.1</version>
+        </dependency>
+
+        <dependency>
+            <groupId>com.fasterxml.jackson.core</groupId>
+            <artifactId>jackson-databind</artifactId>
+            <version>2.20.1</version>
+        </dependency>
+
+        <dependency>
+            <groupId>com.fasterxml.jackson.core</groupId>
+            <artifactId>jackson-annotations</artifactId>
+            <version>2.20</version>
+            <scope>test</scope>
+        </dependency>
+    </dependencies>
+```
+
+## How to set-up the test framework
+1. Clone the repository
+2. The Project SDK must be set under: 
+21 Oracle OpenJDK 21.0.10
+
+The Language level must be set under: 
+21 - Record patterns, pattern matching for switch
+
+<img width="707" height="86" alt="image" src="https://github.com/user-attachments/assets/3df9057c-1ba7-4b20-b29f-8691b8f36075" />
+
+3. Install the following plugins:
+   - Cucumber for Java
+   - Gherkin
+  
+<img width="543" height="133" alt="image" src="https://github.com/user-attachments/assets/0e181913-2101-4fc9-a87a-c0a3f975afe9" />
+
+4. Run all tests using the CucumberRunnerTest file
+
 ## 🌲 Project Tree 
 ```text
 API-Test-Framework-Sparta-Academy-API-/
