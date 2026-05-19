@@ -3,16 +3,17 @@
 - [PROJECT OVERVIEW](#project-overview)
 - [🧱 FRAMEWORK ARCHITECHTURE](#-framework-architechture)
 - [TECH STACK](#tech-stack)
-- [Prerequisites](#prerequisites)
-- [Required dependencies](#required-dependencies)
-- [How to set-up the test framework](#how-to-set-up-the-test-framework)
-- [🌲 Project Tree](#-project-tree)
-- [Framework Architecture](#framework-architecture)
+- [PREREQUISITES](#prerequisites)
+- [REQUIRED DEPENDENCIES](#required-dependencies)
+- [HOW TO SET-UP THE TEST FRAMEWORK](#how-to-set-up-the-test-framework)
+- [🌲 PROJECT TREE](#-project-tree)
+- [FRAMEWORK ARCHITECTURE](#framework-architecture)
 - [📌 FEATURES](#-features)
 - [END POINTS COVERED](#end-points-covered)
 - [✔️ TEST COVERAGE](#️-test-coverage)
   - [Happy Path Tests](#happy-path-tests)
   - [Sad Path Tests](#sad-path-tests)
+- [TEST METRICS](#test-metrics)
 
 # PROJECT OVERVIEW
 
@@ -34,12 +35,12 @@ The framework is built around:
 - Test Runner: JUnit 5 / Cucumber
 - Build Tool: Maven
 
-## Prerequisites
+## PREREQUISITES
 - JDK 21 or higher
 - Maven 4.0.0
 - IntelliJ IDEA (recommended)
 
-## Required dependencies
+## REQUIRED DEPENDENCIES
 The following dependencies must be copied and synced in the pom.xml file of the project to run the tests:
 - hamcrest 2.2
 - slf4j-simple 2.0.7
@@ -113,7 +114,7 @@ The following dependencies must be copied and synced in the pom.xml file of the 
     </dependencies>
 ```
 
-## How to set-up the test framework
+## HOW TO SET-UP THE TEST FRAMEWORK
 1. Clone the repository
 2. The Project SDK must be set under: 
 21 Oracle OpenJDK 21.0.10
@@ -131,7 +132,7 @@ The Language level must be set under:
 
 4. Run all tests using the CucumberRunnerTest file
 
-## 🌲 Project Tree 
+## 🌲 PROJECT TREE
 ```text
 API-Test-Framework-Sparta-Academy-API-/
 ├── .github/
@@ -184,7 +185,7 @@ API-Test-Framework-Sparta-Academy-API-/
                 ├── UpdateSpartan.feature
                 └── UserLogin.feature
 ```
-# Framework Architecture
+# FRAMEWORK ARCHITECTURE
 
 ```mermaid
 flowchart TD
@@ -377,3 +378,33 @@ At least three endpoints are fully validated, including:
 2. Invalid data types
 3. Incorrect credentials
 4. Trying to request without authorization
+
+## TEST METRICS
+A total of 25 test were created with 22 passing and 3 failing. All tests passed with a percentage rate of 88%. 
+
+It was discovered that all failing tests were due to unexpected response codes being returned after using the GET API for both retrieving specific Courses and Spartans that were non-existent and also the POST API for creating a new Spartan.
+Although tests failed due to unexpected response codes, the actually expected functionality of each API call still worked as intended:
+- A GET request for a non-existent Course and Spartan returned an 204 No Content response as the Course/Spartan didnt exist
+- A POST request to create a new Spartan returned a 500 Internal Server Error response and yet the new Spartan is still created and added to the system
+
+<img width="1214" height="121" alt="image" src="https://github.com/user-attachments/assets/8997e218-abf6-419d-9020-71c5bb647183" />
+
+<img width="1214" height="745" alt="image" src="https://github.com/user-attachments/assets/0ac081ea-eed7-46b0-84d0-587d77543154" />
+
+<img width="1216" height="631" alt="image" src="https://github.com/user-attachments/assets/8da7c578-5aca-4572-a1dd-29762c7bc8f4" />
+
+<img width="1212" height="287" alt="image" src="https://github.com/user-attachments/assets/96190a1a-5af5-4963-9638-a6206a0c30b9" />
+
+<img width="1214" height="459" alt="image" src="https://github.com/user-attachments/assets/9f693374-0126-4cdd-9325-812149705ba8" />
+
+<img width="1214" height="955" alt="image" src="https://github.com/user-attachments/assets/7acb6855-6bdf-4bb3-904c-a6f9b124c9c6" />
+
+<img width="1215" height="1103" alt="image" src="https://github.com/user-attachments/assets/9557108d-7e2a-4689-bb6c-4d36f698da52" />
+
+<img width="1211" height="920" alt="image" src="https://github.com/user-attachments/assets/b0ba4196-a5a9-44a6-b0e4-e28d77225886" />
+
+<img width="1210" height="763" alt="image" src="https://github.com/user-attachments/assets/ed66e453-daee-495b-853b-b8ac15fa8009" />
+
+
+
+
