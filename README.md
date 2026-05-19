@@ -1,3 +1,19 @@
+## 📚 Table of Contents
+
+- [PROJECT OVERVIEW](#project-overview)
+- [🧱 FRAMEWORK ARCHITECHTURE](#-framework-architechture)
+- [TECH STACK](#tech-stack)
+- [Prerequisites](#prerequisites)
+- [Required dependencies](#required-dependencies)
+- [How to set-up the test framework](#how-to-set-up-the-test-framework)
+- [🌲 Project Tree](#-project-tree)
+- [Framework Architecture](#framework-architecture)
+- [📌 FEATURES](#-features)
+- [END POINTS COVERED](#end-points-covered)
+- [✔️ TEST COVERAGE](#️-test-coverage)
+  - [Happy Path Tests](#happy-path-tests)
+  - [Sad Path Tests](#sad-path-tests)
+
 # PROJECT OVERVIEW
 
 This project is a robust, BDD-driven test automation framework designed to validate the Sparta Academy REST API. 
