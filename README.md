@@ -20,6 +20,8 @@
 This project is a robust, BDD-driven test automation framework designed to validate the Sparta Academy REST API. 
 The SUT allows a user to view, edit, create and delete Spartan users and also view Courses taken by Spartans.
 
+[Link to GitHub Repository](https://github.com/anYanit/API-Test-Framework-Sparta-Academy-API-)
+
 ## 🧱 FRAMEWORK ARCHITECHTURE
 The framework is built around:
 - Service Object Model (SOM) for clean separation of API logic
